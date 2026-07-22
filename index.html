@@ -2,10 +2,50 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>KIT</title>
+    <title>Петиция</title>
 </head>
 <body>
-    <h1>KIT</h1>
-    <p>Балабол верни сервер!!!!!!Ю!!,!,!,!,!,!,</p>
+
+    <h1>Подпиши петицию</h1>
+
+    <form id="petitionForm">
+        <p>
+            <label for="nickname">Ник:</label><br>
+            <input type="text" id="nickname" required>
+        </p>
+        
+        <p>
+            <label for="userText">Текст от себя:</label><br>
+            <textarea id="userText" rows="4" required></textarea>
+        </p>
+
+        <button type="submit">Подписать петицию</button>
+    </form>
+
+    <div id="resultBlock" hidden>
+        <hr>
+        <h2>Твоя подпись:</h2>
+        <p><b>Ник:</b> <span id="outNick"></span></p>
+        <p><b>Текст:</b> <span id="outText"></span></p>
+        <p><b>#KITВерниСервер</b></p>
+    </div>
+
+    <script>
+        document.getElementById('petitionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Получаем значения из полей
+            var nick = document.getElementById('nickname').value;
+            var text = document.getElementById('userText').value;
+
+            // Вставляем значения в блок с результатом
+            document.getElementById('outNick').textContent = nick;
+            document.getElementById('outText').textContent = text;
+
+            // Показываем блок с результатом
+            document.getElementById('resultBlock').hidden = false;
+        });
+    </script>
+
 </body>
 </html>
